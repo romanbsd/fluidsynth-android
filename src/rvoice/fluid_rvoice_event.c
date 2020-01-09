@@ -30,6 +30,9 @@ static int fluid_rvoice_eventhandler_push_LOCAL(fluid_rvoice_eventhandler_t *han
 static FLUID_INLINE void
 fluid_rvoice_event_dispatch(fluid_rvoice_event_t *event)
 {
+    if (!event || !event->method) {
+        return;
+    }
     event->method(event->object, event->param);
 }
 

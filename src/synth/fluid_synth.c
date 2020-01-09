@@ -4069,6 +4069,9 @@ fluid_synth_render_blocks(fluid_synth_t *synth, int blockcount)
 
     fluid_check_fpe("??? Just starting up ???");
 
+    if (!synth || !synth->eventhandler) {
+        return 0;
+    }
     fluid_rvoice_eventhandler_dispatch_all(synth->eventhandler);
 
     /* do not render more blocks than we can store internally */
